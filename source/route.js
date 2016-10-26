@@ -10,4 +10,4 @@ module.exports = function (app) {
         .post(fileName.addExample)
         .put(fileName.updateExample)
         .delete(fileName.deleteExampleById);
-}
+};
