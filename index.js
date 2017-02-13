@@ -8,7 +8,8 @@ var formate = function (data) {
     return data.replace(/example/g, config.example)
         .replace(/Example/g, config.Example)
         .replace(/chineseDesc/g, config.chineseDesc)
-        .replace(/fileName/g, config.fileName);
+        .replace(/fileName/g, config.fileName)
+        .replace(/route/g, config.example.toLowerCase());
 };
 
 var writeFile = function (path, data, callback) {
