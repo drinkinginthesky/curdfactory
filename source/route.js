@@ -1,15 +1,15 @@
 'use strict';
 
-var fileName = require('../controllers/fileName.server.controller');
+var examples = require('../controllers/fileName.server.controller');
 
 // chineseDesc 路由
 
 module.exports = function (app) {
     app.route('/examples/:exampleId')
-        .get(fileName.getExampleById)
-        .put(fileName.updateExample)
-        .delete(fileName.deleteExampleById);
+        .get(examples.getExampleById)
+        .put(examples.updateExample)
+        .delete(examples.deleteExampleById);
 
-    app.get('/examples', fileName.getExampleList)
-        post('/examples', fileName.addExample);
+    app.get('/examples', examples.getExampleList)
+        .post('/examples', examples.addExample);
 };
