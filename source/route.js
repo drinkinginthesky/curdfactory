@@ -9,5 +9,7 @@ module.exports = function (app) {
         .get(fileName.getExampleById)
         .put(fileName.updateExample)
         .delete(fileName.deleteExampleById);
-    app.post('/examples', fileName.addExample);
+
+    app.get('/examples', fileName.getExampleList)
+        post('/examples', fileName.addExample);
 };
