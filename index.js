@@ -34,6 +34,7 @@ var controllerfn = function (callback) {
         writeFile(resultPath, afterData, callback);
     });
 };
+
 var routefn = function (callback) {
     var route = fs.createReadStream('./source/route.js');
     var data = '';
@@ -46,7 +47,6 @@ var routefn = function (callback) {
         writeFile(resultPath, afterData, callback);
     });
 };
-
 
 async.series(
     [

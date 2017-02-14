@@ -8,7 +8,7 @@ var VALUE = require('../utils/value.server.util');
 /**
  * 增加chineseDesc信息
  */
- exports.addExample = function (req, res) {
+exports.addExample = function (req, res) {
     var example;
     example = new ExampleModel({});
     example.save(function (err) {
@@ -59,9 +59,15 @@ exports.getExampleById = function (req, res) {
  */
 exports.getExampleList = function (req, res) {
     var queryDoc, options, offset, limit;
+    offset = req.query.offset;
+    limit = req.query.limit;
     options = {
-        offset: parseInt(req.query.offset),
-        limit: parseInt(req.query.limit),
+        offset: (offset >= 0)
+            ? offset
+            : 0,
+        limit: (limit >= 0)
+            ? limit
+            : 20,
         sort: {createAt: -1}
     };
     ExampleModel.paginate({}, options, function (err, result) {
