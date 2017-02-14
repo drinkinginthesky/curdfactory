@@ -4,9 +4,16 @@ var config = require('./config');
 var fs = require('fs');
 var async = require('async');
 
+/**
+ * 首字母大写
+ */
+var capitalizeFirstLetter = function (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 var formate = function (data) {
     return data.replace(/example/g, config.example)
-        .replace(/Example/g, config.Example)
+        .replace(/Example/g, capitalizeFirstLetter(config.example))
         .replace(/chineseDesc/g, config.chineseDesc)
         .replace(/fileName/g, config.fileName)
         .replace(/route/g, config.example.toLowerCase());

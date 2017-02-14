@@ -4,10 +4,9 @@ var app = require('../../server');
 var should = require('chai').should();
 var request = require('supertest');
 var mongoose = require('mongoose');
-var UserBackgroundModel = mongoose.model('UserBackground');
 
-describe.only('Testing userBackground model', function () {
-    var agent, userBackgroundId;
+describe.only('Testing example model', function () {
+    var agent, exampleId;
     agent = request.agent(app);
     // before and after
     after(function (done) {
@@ -16,35 +15,30 @@ describe.only('Testing userBackground model', function () {
 
     // test case
     // create
-    it('Should be able to create a userBackground success', function (done) {
+    it('Should be able to create a example success', function (done) {
         agent
-            .post('/userbackgrounds')
-            .send({
-                smallImageUrl: 'http://static.idoool.com/upload/small/86cb7d750092d39cd0a280b24358b337.small.png',
-                largeImageUrl: 'http://static.idoool.com/upload/large/86cb7d750092d39cd0a280b24358b337.large.png',
-                title: '个人背景1',
-                conditionIconList: ['http://192.168.1.123:8091/upload/web/starvisit.png', 'http://static.idoool.com/upload/web/firstsignin.png']
-            })
+            .post('/examples')
+            .send({})
             .expect(200, function (err, res) {
-                userBackgroundId = res.body.data._id;
+                exampleId = res.body.data._id;
                 done();
             });
     });
 
     //query
-    it('Should be able to query a user background', function (done) {
+    it('Should be able to query a example', function (done) {
         agent
-            .get('/userbackgrounds/' + userBackgroundId)
+            .get('/examples/' + exampleId)
             .expect(200, function (err, res) {
-                res.body.data._id.should.equal(userBackgroundId);
+                res.body.data._id.should.equal(exampleId);
                 done();
             });
     });
 
     // query list
-    it('Should be able to query user background list', function (done) {
+    it('Should be able to query example list', function (done) {
         agent
-            .get('/userbackgrounds')
+            .get('/examples')
             .expect(200, function (err, res) {
                 res.body.data.length.should.equal(2);
                 done();
@@ -52,9 +46,9 @@ describe.only('Testing userBackground model', function () {
     });
 
     // delete one
-    it('Should be able to delete a user background', function (done) {
+    it('Should be able to delete a example', function (done) {
         agent
-            .delete('/userbackgrounds/' + userBackgroundId)
+            .delete('/examples/' + exampleId)
             .expect(200, function (err, res) {
                 res.body.data.should.equal('删除成功');
                 done();
