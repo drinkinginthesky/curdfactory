@@ -55,10 +55,26 @@ var routefn = function (callback) {
     });
 };
 
+var generate = function (name, fileType) {
+    return function (callback) {
+        var file = fs.createReadStream('./source/' + fileType + '.js'),
+            data = '',
+            resultPath = './result/' + name + '.server.' + fileType + '.js';
+        file.on("data", function (trunk) {
+            data += trunk;
+        });
+        file.on("end", function () {
+            var afterData = formate(data);
+            writeFile(resultPath, afterData, callback);
+        });
+    };
+};
+
 async.series(
     [
-        controllerfn,
-        routefn
+        generate(config.fileName, 'route'),
+        generate(config.fileName, 'controller'),
+        generate(config.fileName, 'test')
     ],
     function (err, result) {
         console.log('success!');
