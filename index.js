@@ -16,7 +16,9 @@ var capitalizeFirstLetter = function (string) {
 var lowCase = function (string) {
     return string.toLowerCase();
 };
-
+/**
+ * 向代码填充元素
+ */
 var formate = function (data) {
     return data.replace(/example/g, config.example)
         .replace(/Example/g, capitalizeFirstLetter(config.example))
@@ -34,33 +36,9 @@ var writeFile = function (path, data, callback) {
         callback();
     });
 };
-
-// var controllerfn = function (callback) {
-//     var controller = fs.createReadStream('./source/controller.js');
-//     var data = '';
-//     var resultPath = './result/' + config.fileName + '.server.controller.js';
-//     controller.on("data", function (trunk) {
-//         data += trunk;
-//     });
-//     controller.on("end", function () {
-//         var afterData = formate(data);
-//         writeFile(resultPath, afterData, callback);
-//     });
-// };
-
-// var routefn = function (callback) {
-//     var route = fs.createReadStream('./source/route.js');
-//     var data = '';
-//     var resultPath = './result/' + config.fileName + '.server.route.js';
-//     route.on("data", function (trunk) {
-//         data += trunk;
-//     });
-//     route.on("end", function () {
-//         var afterData = formate(data);
-//         writeFile(resultPath, afterData, callback);
-//     });
-// };
-
+/**
+ * 主方法
+ */
 var generate = function (name, fileType) {
     return function (callback) {
         var file = fs.createReadStream('./source/' + fileType + '.js'),
