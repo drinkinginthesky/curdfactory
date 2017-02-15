@@ -17,7 +17,7 @@ describe.only('Testing example model', function () {
     // create
     it('Should be able to create a example success', function (done) {
         agent
-            .post('/examples')
+            .post('/routeurls')
             .send({})
             .expect(200, function (err, res) {
                 exampleId = res.body.data._id;
@@ -28,7 +28,7 @@ describe.only('Testing example model', function () {
     //query
     it('Should be able to query a example', function (done) {
         agent
-            .get('/examples/' + exampleId)
+            .get('/routeurls/' + exampleId)
             .expect(200, function (err, res) {
                 res.body.data._id.should.equal(exampleId);
                 done();
@@ -38,7 +38,7 @@ describe.only('Testing example model', function () {
     // query list
     it('Should be able to query example list', function (done) {
         agent
-            .get('/examples')
+            .get('/routeurls')
             .expect(200, function (err, res) {
                 res.body.data.length.should.equal(2);
                 done();
@@ -48,7 +48,7 @@ describe.only('Testing example model', function () {
     // delete one
     it('Should be able to delete a example', function (done) {
         agent
-            .delete('/examples/' + exampleId)
+            .delete('/routeurls/' + exampleId)
             .expect(200, function (err, res) {
                 res.body.data.should.equal('删除成功');
                 done();
