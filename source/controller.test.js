@@ -4,13 +4,14 @@ var app = require('../../server');
 var should = require('chai').should();
 var request = require('supertest');
 var mongoose = require('mongoose');
+var ExampleModel = mongoose.model('Example');
 
 describe.only('Testing example model', function () {
     var agent, exampleId;
     agent = request.agent(app);
     // before and after
     after(function (done) {
-        UserBackgroundModel.remove(done);
+        ExampleModel.remove(done);
     });
 
     // test case
