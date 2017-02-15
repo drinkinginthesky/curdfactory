@@ -58,7 +58,7 @@ async.series(
     [
         generate(lowCase(config.example), 'route'),
         generate(lowCase(config.example), 'controller'),
-        generate(lowCase(config.example), 'test')
+        generate(lowCase(config.example), 'controller.test')
     ],
     function (err, result) {
         console.log('success!');
