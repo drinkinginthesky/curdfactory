@@ -60,6 +60,8 @@ var generate = function (name, fileType) {
 async.series(
     [
         generate(lowCase(config.example), 'route'),
+        generate(lowCase(config.example), 'model'),
+        generate(lowCase(config.example), 'schema'),
         generate(lowCase(config.example), 'controller'),
         generate(lowCase(config.example), 'controller.test')
     ],
