@@ -6,7 +6,7 @@ var request = require('supertest');
 var mongoose = require('mongoose');
 var ExampleModel = mongoose.model('Example');
 
-describe.only('Testing example model', function () {
+describe.only('Testing example controller', function () {
     var agent, exampleId;
     agent = request.agent(app);
     // before and after

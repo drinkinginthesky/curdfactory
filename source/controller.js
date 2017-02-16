@@ -62,10 +62,10 @@ exports.getExampleList = function (req, res) {
     offset = req.query.offset;
     limit = req.query.limit;
     options = {
-        offset: (offset >= 0)
+        offset: offset >= 0
             ? parseInt(offset)
             : 0,
-        limit: (limit >= 0)
+        limit: limit >= 0
             ? parseInt(limit)
             : 20,
         sort: {createAt: -1}
@@ -86,14 +86,14 @@ exports.deleteExampleById = function (req, res) {
     var exampleId;
     exampleId = req.params.exampleId || req.query.exampleId;
     if (!exampleId) {
-        utils.respondFailure(res, '缺少参数！');
+        utils.respondFailure(res, '缺少参数');
         return;
     }
     ExampleModel.remove({_id: exampleId}, function (err) {
         if (!!err) {
-            utils.respondFailure(res, '删除失败！');
+            utils.respondFailure(res, '删除失败');
             return;
         }
-        utils.respondSuccess(res);
+        utils.respondSuccess(res, '删除成功');
     });
 };
