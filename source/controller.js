@@ -59,16 +59,16 @@ exports.getExampleById = function (req, res) {
  */
 exports.getExampleList = function (req, res) {
     var queryDoc, options, offset, limit;
-    offset = req.query.offset;
-    limit = req.query.limit;
+    offset = req.query.offset
+        ? parseInt(req.query.offset)
+        : 0;
+    limit = req.query.limit
+        ? parseInt(req.query.limit)
+        : 20;
     options = {
-        offset: offset >= 0
-            ? parseInt(offset)
-            : 0,
-        limit: limit >= 0
-            ? parseInt(limit)
-            : 20,
-        sort: {createAt: -1}
+        offset: offset,
+        limit: limit,
+        sort: {createdAt: -1}
     };
     ExampleModel.paginate({}, options, function (err, result) {
         if (!!err) {
