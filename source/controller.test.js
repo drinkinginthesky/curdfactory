@@ -41,7 +41,7 @@ describe.only('Testing example controller', function () {
         agent
             .get('/routeurls?offset=0&limit=20')
             .expect(200, function (err, res) {
-                res.body.data.length.should.equal(2);
+                res.body.data.length.should.equal(1);
                 done();
             });
     });
