@@ -10,12 +10,14 @@ var async = require('async');
 var capitalizeFirstLetter = function (string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
+
 /**
  * 全小写
  */
 var lowCase = function (string) {
     return string.toLowerCase();
 };
+
 /**
  * 向代码填充元素
  */
@@ -36,6 +38,7 @@ var writeFile = function (path, data, callback) {
         callback();
     });
 };
+
 /**
  * 主方法
  */

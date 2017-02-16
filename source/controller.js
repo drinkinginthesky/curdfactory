@@ -63,10 +63,10 @@ exports.getExampleList = function (req, res) {
     limit = req.query.limit;
     options = {
         offset: (offset >= 0)
-            ? offset
+            ? parseInt(offset)
             : 0,
         limit: (limit >= 0)
-            ? limit
+            ? parseInt(limit)
             : 20,
         sort: {createAt: -1}
     };

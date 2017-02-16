@@ -39,7 +39,7 @@ describe.only('Testing example model', function () {
     // query list
     it('Should be able to query example list', function (done) {
         agent
-            .get('/routeurls')
+            .get('/routeurls?offset=0&limit=20')
             .expect(200, function (err, res) {
                 res.body.data.length.should.equal(2);
                 done();
