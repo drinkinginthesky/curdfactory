@@ -65,12 +65,13 @@ exports.getExampleList = function (req, res) {
     limit = req.query.limit
         ? parseInt(req.query.limit)
         : 20;
+    queryDoc = {};
     options = {
         offset: offset,
         limit: limit,
         sort: {createdAt: -1}
     };
-    ExampleModel.paginate({}, options, function (err, result) {
+    ExampleModel.paginate(queryDoc, options, function (err, result) {
         if (!!err) {
             utils.respondFailure(res);
             return;
