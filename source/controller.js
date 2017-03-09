@@ -27,7 +27,7 @@ exports.addExample = function (req, res) {
 exports.updateExample = function (req, res) {
     var exampleId;
     exampleId = req.params.exampleId;
-    if (!!exampleId) {
+    if (!exampleId) {
         utils.respondFailure(res);
         return;
     }
