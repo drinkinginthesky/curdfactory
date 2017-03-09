@@ -36,6 +36,7 @@ exports.updateExample = function (req, res) {
 
 /**
  * 根据exampleId查询chineseDesc信息
+ * @param {string} exampleId chineseDescID
  */
 exports.getExampleById = function (req, res) {
     var exampleId = req.params.exampleId;
@@ -82,6 +83,8 @@ exports.getExampleList = function (req, res) {
 
 /**
  *  删除一条chineseDesc
+ * @param {string} exampleId chineseDescID
+ * @query {string} exampleId chineseDescID
  */
 exports.deleteExampleById = function (req, res) {
     var exampleId;
