@@ -6,7 +6,7 @@ var utils = require('../utils/utils.server.util');
 var VALUE = require('../utils/value.server.util');
 
 /**
- * 增加chineseDesc信息
+ * 创建chineseDesc信息
  */
 exports.addExample = function (req, res) {
     var example;
@@ -77,7 +77,10 @@ exports.getExampleList = function (req, res) {
             utils.respondFailure(res);
             return;
         }
-        utils.respondSuccess(res, result.docs);
+        utils.respondSuccess(res, {
+            list: result.docs,
+            isLastPage: result.docs.length < limit
+        });
     });
 };
 

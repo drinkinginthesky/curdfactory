@@ -10,6 +10,9 @@ describe.only('Testing example controller', function () {
     var agent, exampleId;
     agent = request.agent(app);
     // before and after
+    before(function (done) {
+        done();
+    });
     after(function (done) {
         ExampleModel.remove(done);
     });
@@ -41,7 +44,7 @@ describe.only('Testing example controller', function () {
         agent
             .get('/routeurls?offset=0&limit=20')
             .expect(200, function (err, res) {
-                res.body.data.length.should.equal(1);
+                res.body.data.list.length.should.equal(1);
                 done();
             });
     });
