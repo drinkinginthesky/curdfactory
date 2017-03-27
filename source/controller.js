@@ -10,7 +10,9 @@ var VALUE = require('../utils/value.server.util');
  */
 exports.addExample = function (req, res) {
     var example;
-    example = new ExampleModel({});
+    example = new ExampleModel({
+
+    });
     example.save(function (err) {
         if (!!err) {
             utils.respondFailure(res);
@@ -21,8 +23,8 @@ exports.addExample = function (req, res) {
 };
 
 /**
- *  更新chineseDesc信息
- *
+ * 更新chineseDesc信息
+ * @body {params} exampleId chineseDescID
  */
 exports.updateExample = function (req, res) {
     var exampleId;
