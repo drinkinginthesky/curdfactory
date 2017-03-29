@@ -98,7 +98,7 @@ exports.deleteExampleById = function (req, res) {
         utils.respondFailure(res, '缺少参数');
         return;
     }
-    ExampleModel.remove({_id: exampleId}, function (err) {
+    ExampleModel.findOneAndRemove({_id: exampleId}, function (err, example) {
         if (!!err) {
             utils.respondFailure(res, '删除失败');
             return;
