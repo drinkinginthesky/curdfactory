@@ -1,7 +1,7 @@
 'use strict';
 
-var example = require('../controllers/fileName.server.controller');
 var management = require('../utils/management.server.util');
+var example = require('../controllers/fileName.server.controller');
 
 // chineseDesc 路由
 

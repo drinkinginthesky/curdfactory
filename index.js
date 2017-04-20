@@ -1,8 +1,8 @@
 'use strict';
 
-var config = require('./config');
 var fs = require('fs');
 var async = require('async');
+var config = require('./config');
 
 /**
  * 首字母大写
