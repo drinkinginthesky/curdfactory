@@ -4,6 +4,7 @@ var app = require('../../server');
 var should = require('chai').should();
 var request = require('supertest');
 var mongoose = require('mongoose');
+var UserModel = mongoose.model('User');
 var ExampleModel = mongoose.model('Example');
 
 describe.only('Testing example controller', function () {
@@ -11,13 +12,41 @@ describe.only('Testing example controller', function () {
     agent = request.agent(app);
     // before and after
     before(function (done) {
-        done();
+        var user = new UserModel({
+            phone: '135792468',
+            password: 'adminpass123',
+            nickname: 'sky',
+            integral: 100,
+            userIcon: 'www.baidu.com',
+            role: 0
+        });
+        user.save(function (err) {
+            done(err);
+        })
     });
     after(function (done) {
         ExampleModel.remove(done);
     });
 
     // test case
+    // admin login
+    it('Should be able to login', function (done) {
+        agent
+            .post('/login')
+            .send({
+                phone: '135792468',
+                password: 'adminpass123'
+            })
+            .expect(200)
+            .end(function (err, res) {
+                if (!!err) {
+                    done(err);
+                    return;
+                }
+                res.body.status.should.equal(1);
+                done();
+            });
+    });
     // create
     it('Should be able to create a example success', function (done) {
         agent

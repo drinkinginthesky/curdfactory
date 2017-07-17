@@ -29,6 +29,9 @@ var formate = function (data) {
         .replace(/routeurl/g, lowCase(config.example));
 };
 
+/**
+ * 写方法
+ */
 var writeFile = function (path, data, callback) {
     fs.writeFile(path, data, 'utf8', function (err) {
         if (!!err) {
@@ -57,6 +60,9 @@ var generate = function (name, fileType) {
     };
 };
 
+/**
+ * 执行
+ */
 async.series(
     [
         generate(lowCase(config.example), 'route'),
