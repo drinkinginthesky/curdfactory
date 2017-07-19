@@ -87,7 +87,7 @@ exports.getExampleList = function (req, res) {
 };
 
 /**
- *  删除一条chineseDesc
+ * 删除一条chineseDesc
  * @param {string} exampleId chineseDescID
  * @query {string} exampleId chineseDescID
  */
