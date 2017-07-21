@@ -33,7 +33,15 @@ exports.updateExample = function (req, res) {
         utils.respondFailure(res);
         return;
     }
+    ExampleModel
+        .findById(exampleId)
+        .exec(function (err, example) {
+            if (!!err || !example) {
+                utils.respondFailure(res);
+                return;
+            }
 
+        });
 };
 
 /**
@@ -46,13 +54,16 @@ exports.getExampleById = function (req, res) {
         utils.respondFailure(res, '缺少参数！');
         return;
     }
-    ExampleModel.findById(exampleId, function (err, example) {
-        if (!!err) {
-            utils.respondFailure(res);
-            return;
-        }
-        utils.respondSuccess(res, example);
-    });
+    ExampleModel
+        .findById(exampleId)
+        .lean()
+        .exec(function (err, example) {
+            if (!!err) {
+                utils.respondFailure(res);
+                return;
+            }
+            utils.respondSuccess(res, example);
+        });
 };
 
 /**
