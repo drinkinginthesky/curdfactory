@@ -58,7 +58,7 @@ exports.getExampleById = function (req, res) {
         .findById(exampleId)
         .lean()
         .exec(function (err, example) {
-            if (!!err) {
+            if (!!err || !example) {
                 utils.respondFailure(res);
                 return;
             }
@@ -86,7 +86,7 @@ exports.getExampleList = function (req, res) {
         sort: {createdAt: -1}
     };
     ExampleModel.paginate(queryDoc, options, function (err, result) {
-        if (!!err) {
+        if (!!err || !result) {
             utils.respondFailure(res);
             return;
         }
