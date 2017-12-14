@@ -22,7 +22,7 @@ describe.only('Testing example controller', function () {
         });
         user.save(function (err) {
             done(err);
-        })
+        });
     });
     after(function (done) {
         UserModel.remove(function (err) {
