@@ -25,9 +25,7 @@ describe.only('Testing example controller', function () {
         });
     });
     after(function (done) {
-        UserModel.remove(function (err) {
-            ExampleModel.remove(done);
-        });
+        ExampleModel.remove(done);
     });
 
     // test case
